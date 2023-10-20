@@ -1,0 +1,79 @@
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link, useNavigate } from 'react-router-dom';
+import Sidebar from '../sidebar/Sidebar';
+import { logout } from '../../actions/authActions';
+
+const CustomNavbar = ({ profilePath }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      localStorage.removeItem('token');
+      navigate('/login');
+    } catch (error) {
+      console.error('Error logging out:', error.response.data);
+    }
+  };
+
+  return (
+    <Navbar expand="lg" className="bg-dark text-white fixed-top">
+      <Container fluid>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+            {!token && <Nav.Link as={Link} to="/login" className="nav-link">Login</Nav.Link>}
+            <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
+            <Nav.Link as={Link} to="/about" className="nav-link">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/feature" className="nav-link">Our Features</Nav.Link>
+            <Nav.Link as={Link} to="/classes" className="nav-link">Classes</Nav.Link>
+            <Nav.Link as={Link} to="/metrics" className="nav-link">Metrics</Nav.Link>
+          </Nav>
+          {token && (
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success">Search</Button>
+            </Form>
+          )}
+          {token && (
+            <NavDropdown title={<><img
+              src={require('../../images/itachi.png')}
+              alt="Profile"
+              className="rounded-circle"
+              style={{
+                width: "40px",
+                height: "40px",
+                margin: "relative",
+              }}
+            />Profile</>}>
+              <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/account">Account</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/settings">Settings</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+            </NavDropdown>
+          )}
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default CustomNavbar;

@@ -1,0 +1,32 @@
+.profile-card {
+  background-color: #f4f5f7;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-card .card {
+  border: none;
+}
+
+.profile-card .card img {
+  border-radius: 50%;
+}
+
+.profile-card .card-title {
+  font-size: 1.5rem;
+}
+
+.profile-card .text-muted {
+  font-size: 1rem;
+}
+
+.profile-card .card-text {
+  font-size: 1rem;
+}
+
+.profile-card .btn {
+  font-size: 1rem;
+  margin-top: 10px;
+}

@@ -1,0 +1,58 @@
+/* Add this CSS to your stylesheet */
+.section-container {
+    padding: 40px; /* Adjust the padding as needed */
+    background-color: #eee;
+  }
+  
+  .page-header-container {
+    background-color: #d8ebd8; /* Adjust the background color as needed */
+    padding: 40px; /* Adjust the padding as needed */
+  }
+  
+  .profile-card {
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .profile-image-upload {
+    display: none;
+  }
+  
+  .profile-image-upload-label {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 8px;
+    background-color: #007bff; /* Primary button color */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .profile-info {
+    margin-bottom: 20px;
+  }
+  
+  .profile-info p {
+    margin: 0;
+  }
+  
+  .project-status-card {
+    margin-bottom: 20px;
+  }
+  
+  .project-status-label {
+    font-size: 0.77rem;
+  }
+  
+  .project-progress {
+    border-radius: 20px;
+  }
+  
