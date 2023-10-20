@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/Table';
 import UserProfileModal from './UserProfileModal';
 import Footer from "../Components/footer/footer";
 import DeleteModal from "./DeleteModal"
+
 import {
   MDBContainer,
 } from 'mdb-react-ui-kit';
@@ -138,7 +139,7 @@ const Users = () => {
                                         onClick={() => handleOpenProfileModal(user.id)}
                                       >
                                         Profile
-</button>
+                                      </button>
 
                                     </td>
                                     <td>
@@ -155,17 +156,17 @@ const Users = () => {
                               </tbody>
                             </Table>
                           </div>
-                          <UserProfileModal
-  userId={selectedUserIdForProfile}
-  isOpen={profileModalOpen}
-  toggle={handleCloseProfileModal}
-/>
+                          {/* <UserProfileModal
+                              userId={selectedUserIdForProfile}
+                              isOpen={profileModalOpen}
+                              toggle={handleCloseProfileModal}
+                            /> */}
                           <DeleteModal
                             isOpen={deleteModalOpen}
                             toggle={handleCloseDeleteModal}
                             handleConfirmDelete={handleConfirmDelete}
                           />
-                          
+
                         </div>
                       </div>
                     </div>
